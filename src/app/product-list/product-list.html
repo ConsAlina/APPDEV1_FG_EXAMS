@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2>Products</h2>
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Add to Cart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>P{{ product.price }}</td>
+        <td>{{ product.stock }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm"
+            (click)="addToCart(product)"
+            [disabled]="product.stock === 0">
+            {{ product.stock === 0 ? 'Out of Stock' : 'Add to Cart' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" (click)="goToCart()">Go to Cart</button>
+</div>
